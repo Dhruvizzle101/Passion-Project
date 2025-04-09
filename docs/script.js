@@ -1,3 +1,34 @@
+// Add code to the beginning of script.js to handle image paths
+document.addEventListener('DOMContentLoaded', function() {
+    // Update all background images in the CSS
+    function updateBackgroundImages() {
+        // Find all elements with background images
+        const elementsWithBg = document.querySelectorAll('.parallax-bg');
+        
+        elementsWithBg.forEach(el => {
+            // Get current background image URL and replace it with the corrected path
+            const style = getComputedStyle(el);
+            const bgImage = style.backgroundImage;
+            
+            if (bgImage && bgImage !== 'none') {
+                // Extract the image path from the url('...') format
+                const match = bgImage.match(/url\(['"]?(.*?)['"]?\)/);
+                
+                if (match && match[1]) {
+                    const imagePath = match[1];
+                    if (imagePath.startsWith('images/')) {
+                        // Apply the correct base URL
+                        el.style.backgroundImage = `url('${window.baseUrl}/images/${imagePath.split('images/')[1]}')`;
+                    }
+                }
+            }
+        });
+    }
+    
+    // Call the function after a short delay to ensure styles are loaded
+    setTimeout(updateBackgroundImages, 100);
+});
+
 // Main initialization function
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
