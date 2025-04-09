@@ -1,51 +1,34 @@
-// Add code to the beginning of script.js to handle image paths
-document.addEventListener('DOMContentLoaded', function() {
-    // Update all background images in the CSS
-    function updateBackgroundImages() {
-        // Find all elements with background images
-        const elementsWithBg = document.querySelectorAll('.parallax-bg');
-        
-        elementsWithBg.forEach(el => {
-            // Get current background image URL and replace it with the corrected path
-            const style = getComputedStyle(el);
-            const bgImage = style.backgroundImage;
-            
-            if (bgImage && bgImage !== 'none') {
-                // Extract the image path from the url('...') format
-                const match = bgImage.match(/url\(['"]?(.*?)['"]?\)/);
-                
-                if (match && match[1]) {
-                    const imagePath = match[1];
-                    if (imagePath.startsWith('images/')) {
-                        // Apply the correct base URL
-                        el.style.backgroundImage = `url('${window.baseUrl}/images/${imagePath.split('images/')[1]}')`;
-                    }
-                }
-            }
-        });
-    }
-    
-    // Call the function after a short delay to ensure styles are loaded
-    setTimeout(updateBackgroundImages, 100);
-});
-
 // Main initialization function
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
+    initNavbar();
+    initTabs();
     initScrollReveal();
     initNavbarScroll();
     initSmoothScroll();
+    initTestimonialSlider();
+    initAnimations();
+    initParallaxEffect();
+    setupEnhancedParallax();
+    setupSectionHighlighting();
+    
+    // Initialize analyzer components
     initAnalyzerTabs();
     initFinancialTabs();
     initTimeframeTabs();
-    initMobileMenu();
+    
+    // Initialize charts
     initCharts();
-    initParallaxEffect();
-    initChatbot(); // Initialize the chatbot
-    enhanceChatbotExperience(); // Add this line to initialize our chatbot enhancements
-    setupContextSuggestions(); // Add this line to initialize context-aware chatbot suggestions
-    setupSectionHighlighting(); // Add this line
-    initPaperTrading(); // Initialize the paper trading simulator
+    
+    // Initialize mobile menu
+    initMobileMenu();
+    
+    // Initialize paper trading simulator
+    initPaperTrading();
+    
+    // Initialize chatbot enhancements
+    initChatbot();
+    enhanceChatbotExperience();
 });
 
 // Reveal elements on scroll
@@ -504,16 +487,6 @@ function setupCandleHover(canvasElement, labels, data) {
     });
 }
 
-// Wait for DOM to fully load
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all components
-    initNavbar();
-    initTabs();
-    initTestimonialSlider();
-    initMobileMenu();
-    initAnimations();
-});
-
 // Header scroll effect
 function initNavbar() {
     const header = document.querySelector('header');
@@ -669,54 +642,6 @@ function initAnimations() {
         });
     });
 }
-
-// Add CSS classes for animations (will be used by initAnimations)
-const style = document.createElement('style');
-style.textContent = `
-    .about-card, .feature-card, .contact-card {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    
-    .about-card.animate, .feature-card.animate, .contact-card.animate {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    .form-success {
-        background-color: var(--secondary-color);
-        color: white;
-        padding: 15px;
-        border-radius: var(--border-radius);
-        margin-top: 20px;
-        text-align: center;
-    }
-    
-    .nav-links.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        padding: 20px;
-        box-shadow: var(--shadow);
-        z-index: 100;
-    }
-    
-    @media (max-width: 768px) {
-        .nav-links {
-            display: none;
-        }
-        
-        .nav-links.active {
-            display: flex;
-        }
-    }
-`;
-document.head.appendChild(style);
 
 // Initialize parallax scrolling effect
 function initParallaxEffect() {
