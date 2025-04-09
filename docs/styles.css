@@ -1810,7 +1810,7 @@ section:last-child {
 .hero .parallax-bg {
     background-image: 
         linear-gradient(to bottom, rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0.9)),
-        url('images/stock-chart.svg');
+        url('stock-chart.svg');
     background-size: 120% 120%;
     opacity: 0.2;
     transform-origin: center top;
@@ -1838,7 +1838,7 @@ section:last-child {
 .features .parallax-bg {
     background-image: 
         linear-gradient(to bottom, rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.95)),
-        url('images/candle-charts.svg');
+        url('candle-charts.svg');
     background-position: center;
     background-size: 110% 110%;
     opacity: 0.1;
@@ -1867,7 +1867,7 @@ section:last-child {
 .learn-section .parallax-bg {
     background-image: 
         linear-gradient(to bottom, rgba(12, 12, 12, 0.9), rgba(12, 12, 12, 0.97)),
-        url('images/portfolio.svg');
+        url('portfolio.svg');
     background-position: center;
     background-size: 110% 110%;
     opacity: 0.08;
@@ -1896,7 +1896,7 @@ section:last-child {
 .interactive-section .parallax-bg {
     background-image: 
         linear-gradient(to bottom, rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.95)),
-        url('images/dividends.svg');
+        url('dividends.svg');
     background-position: center;
     background-size: 110% 110%;
     opacity: 0.09;
