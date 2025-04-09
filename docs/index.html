@@ -80,13 +80,57 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="images/stock-chart.svg" alt="Stock chart visualization" class="floating-element">
+                <svg class="floating-element" width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                    <style>
+                        .grid { stroke: rgba(255,255,255,0.1); stroke-width: 1; }
+                        .line { stroke: #0DFF84; stroke-width: 3; fill: none; }
+                        .area { fill: url(#gradient); opacity: 0.3; }
+                        .point { fill: #0DFF84; stroke: #0A0A0A; stroke-width: 2; }
+                        .annotation { font-family: 'Inter', sans-serif; font-size: 12px; fill: #E2E2E2; }
+                    </style>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#0DFF84;stop-opacity:0.5" />
+                            <stop offset="100%" style="stop-color:#0DFF84;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Grid lines -->
+                    <g>
+                        <line class="grid" x1="0" y1="50" x2="600" y2="50" />
+                        <line class="grid" x1="0" y1="100" x2="600" y2="100" />
+                        <line class="grid" x1="0" y1="150" x2="600" y2="150" />
+                        <line class="grid" x1="0" y1="200" x2="600" y2="200" />
+                        <line class="grid" x1="0" y1="250" x2="600" y2="250" />
+                        <line class="grid" x1="0" y1="300" x2="600" y2="300" />
+                        <line class="grid" x1="0" y1="350" x2="600" y2="350" />
+                        <line class="grid" x1="50" y1="0" x2="50" y2="400" />
+                        <line class="grid" x1="150" y1="0" x2="150" y2="400" />
+                        <line class="grid" x1="250" y1="0" x2="250" y2="400" />
+                        <line class="grid" x1="350" y1="0" x2="350" y2="400" />
+                        <line class="grid" x1="450" y1="0" x2="450" y2="400" />
+                        <line class="grid" x1="550" y1="0" x2="550" y2="400" />
+                    </g>
+                    <!-- Stock chart line -->
+                    <path class="line" d="M0,300 C50,280 100,290 150,250 S200,180 250,200 S350,120 400,100 S500,150 600,50" />
+                    <!-- Fill area under the line -->
+                    <path class="area" d="M0,300 C50,280 100,290 150,250 S200,180 250,200 S350,120 400,100 S500,150 600,50 L600,400 L0,400 Z" />
+                    <!-- Data points -->
+                    <circle class="point" cx="150" cy="250" r="5" />
+                    <circle class="point" cx="250" cy="200" r="5" />
+                    <circle class="point" cx="400" cy="100" r="5" />
+                    <circle class="point" cx="500" cy="150" r="5" />
+                    <!-- Annotations -->
+                    <text class="annotation" x="150" y="235">Q1</text>
+                    <text class="annotation" x="250" y="185">Q2</text>
+                    <text class="annotation" x="400" y="85">Q3</text>
+                    <text class="annotation" x="500" y="135">Q4</text>
+                </svg>
                 <div class="stock-ticker">
                     <div class="ticker-item up">AAPL <span>+2.4%</span></div>
                     <div class="ticker-item down">TSLA <span>-1.2%</span></div>
                     <div class="ticker-item up">MSFT <span>+1.7%</span></div>
                     <div class="ticker-item up">NVDA <span>+3.8%</span></div>
-                    <div class="ticker-item down">META <span>-0.5%</span></div>
+                    <div class="ticker-a down">META <span>-0.5%</span></div>
                 </div>
             </div>
         </div>
@@ -133,32 +177,173 @@
             </div>
             <div class="learn-grid">
                 <div class="glass-card reveal-element">
-                    <img src="images/pe-ratio.svg" alt="P/E Ratio" class="card-img">
+                    <svg class="card-img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                            .pe-circle { fill: rgba(13, 255, 132, 0.1); stroke: #0DFF84; stroke-width: 2; }
+                            .pe-text { font-family: 'Inter', sans-serif; font-weight: bold; fill: #0DFF84; text-anchor: middle; }
+                            .pe-label { font-family: 'Inter', sans-serif; font-size: 8px; fill: #E2E2E2; text-anchor: middle; }
+                            .pe-bar { fill: #0DFF84; }
+                        </style>
+                        <circle class="pe-circle" cx="40" cy="40" r="35" />
+                        <text class="pe-text" x="40" y="35" font-size="18">P/E</text>
+                        <text class="pe-text" x="40" y="50" font-size="22">25.4</text>
+                        <rect class="pe-bar" x="15" y="60" width="10" height="5" />
+                        <rect class="pe-bar" x="30" y="60" width="20" height="5" />
+                        <rect class="pe-bar" x="55" y="60" width="10" height="5" />
+                        <text class="pe-label" x="20" y="70">Low</text>
+                        <text class="pe-label" x="40" y="70">Average</text>
+                        <text class="pe-label" x="60" y="70">High</text>
+                    </svg>
                     <h3>P/E Ratios</h3>
                     <p>Learn how to evaluate a company's valuation and compare it to competitors.</p>
                 </div>
                 <div class="glass-card reveal-element">
-                    <img src="images/volatility.svg" alt="Volatility" class="card-img">
+                    <svg class="card-img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                            .vol-line { stroke: #0DFF84; stroke-width: 2; fill: none; }
+                            .vol-area { fill: url(#vol-gradient); opacity: 0.3; }
+                            .vol-dot { fill: #0DFF84; }
+                        </style>
+                        <defs>
+                            <linearGradient id="vol-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0DFF84;stop-opacity:0.5" />
+                                <stop offset="100%" style="stop-color:#0DFF84;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Volatility line -->
+                        <path class="vol-line" d="M5,40 C10,20 15,60 20,30 S30,60 35,20 S45,50 50,30 S60,10 65,50 S75,30 75,40" />
+                        <path class="vol-area" d="M5,40 C10,20 15,60 20,30 S30,60 35,20 S45,50 50,30 S60,10 65,50 S75,30 75,40 L75,70 L5,70 Z" />
+                        <!-- Standard deviation indicators -->
+                        <line stroke="#E2E2E2" stroke-width="1" stroke-dasharray="3,3" x1="5" y1="25" x2="75" y2="25" />
+                        <line stroke="#E2E2E2" stroke-width="1" stroke-dasharray="3,3" x1="5" y1="55" x2="75" y2="55" />
+                        <circle class="vol-dot" cx="35" cy="20" r="3" />
+                        <circle class="vol-dot" cx="60" cy="10" r="3" />
+                    </svg>
                     <h3>Volatility Analysis</h3>
                     <p>Understand price fluctuations and measure investment risk with confidence.</p>
                 </div>
                 <div class="glass-card reveal-element">
-                    <img src="images/candle-charts.svg" alt="Candle Charts" class="card-img">
+                    <svg class="card-img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                            .candle-up { fill: #0DFF84; stroke: #0DFF84; }
+                            .candle-down { fill: #FF3A5E; stroke: #FF3A5E; }
+                            .candle-wick { stroke-width: 1.5; }
+                            .candle-grid { stroke: rgba(255,255,255,0.1); stroke-width: 1; }
+                        </style>
+                        <!-- Grid -->
+                        <line class="candle-grid" x1="0" y1="20" x2="80" y2="20" />
+                        <line class="candle-grid" x1="0" y1="40" x2="80" y2="40" />
+                        <line class="candle-grid" x1="0" y1="60" x2="80" y2="60" />
+                        
+                        <!-- Candle 1 - Bullish -->
+                        <line class="candle-wick candle-up" x1="15" y1="15" x2="15" y2="60" />
+                        <rect class="candle-up" x="10" y="30" width="10" height="20" />
+                        
+                        <!-- Candle 2 - Bearish -->
+                        <line class="candle-wick candle-down" x1="30" y1="10" x2="30" y2="65" />
+                        <rect class="candle-down" x="25" y="20" width="10" height="25" />
+                        
+                        <!-- Candle 3 - Doji -->
+                        <line class="candle-wick candle-up" x1="45" y1="20" x2="45" y2="55" />
+                        <rect class="candle-up" x="40" y="37" width="10" height="2" />
+                        
+                        <!-- Candle 4 - Bullish -->
+                        <line class="candle-wick candle-up" x1="60" y1="25" x2="60" y2="65" />
+                        <rect class="candle-up" x="55" y="42" width="10" height="15" />
+                        
+                        <!-- Candle 5 - Bearish -->
+                        <line class="candle-wick candle-down" x1="75" y1="15" x2="75" y2="55" />
+                        <rect class="candle-down" x="70" y="25" width="10" height="20" />
+                    </svg>
                     <h3>Candle Charts</h3>
                     <p>Master the art of reading candlestick patterns to predict price movements.</p>
                 </div>
                 <div class="glass-card reveal-element">
-                    <img src="images/dividends.svg" alt="Dividends" class="card-img">
+                    <svg class="card-img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                            .div-circle { fill: rgba(13, 255, 132, 0.1); stroke: #0DFF84; stroke-width: 1; }
+                            .div-coin { fill: #0DFF84; }
+                            .div-spark { fill: none; stroke: #0DFF84; stroke-width: 2; }
+                            .div-dollar { fill: #0A0A0A; font-family: 'Inter', sans-serif; font-weight: bold; text-anchor: middle; }
+                        </style>
+                        <!-- Growth chart -->
+                        <path class="div-spark" d="M10,60 C15,55 20,56 25,52 S35,46 40,42 S50,38 55,34 S65,30 70,25" />
+                        <!-- Main coin -->
+                        <circle class="div-coin" cx="40" cy="40" r="25" />
+                        <text class="div-dollar" x="40" y="48" font-size="20">$</text>
+                        <!-- Smaller coins -->
+                        <circle class="div-circle" cx="20" cy="30" r="8" />
+                        <text class="div-dollar" x="20" y="33" font-size="8">$</text>
+                        <circle class="div-circle" cx="65" cy="50" r="10" />
+                        <text class="div-dollar" x="65" y="54" font-size="10">$</text>
+                        <circle class="div-circle" cx="15" cy="60" r="6" />
+                        <text class="div-dollar" x="15" y="63" font-size="6">$</text>
+                        <circle class="div-circle" cx="60" cy="25" r="7" />
+                        <text class="div-dollar" x="60" y="28" font-size="7">$</text>
+                    </svg>
                     <h3>Dividend Investing</h3>
                     <p>Generate passive income through companies that share profits with shareholders.</p>
                 </div>
                 <div class="glass-card reveal-element">
-                    <img src="images/annual-reports.svg" alt="Annual Reports" class="card-img">
+                    <svg class="card-img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                            .report-bg { fill: rgba(13, 255, 132, 0.1); }
+                            .report-paper { fill: #E2E2E2; }
+                            .report-line { stroke: #0A0A0A; stroke-width: 1; }
+                            .report-circle { fill: #0DFF84; }
+                            .report-icon { fill: none; stroke: #0DFF84; stroke-width: 2; }
+                        </style>
+                        <!-- Base documents -->
+                        <rect class="report-bg" x="10" y="10" width="60" height="60" rx="3" />
+                        <rect class="report-paper" x="15" y="15" width="45" height="55" rx="2" />
+                        <rect class="report-paper" x="20" y="10" width="45" height="55" rx="2" />
+                        <rect class="report-paper" x="25" y="5" width="45" height="55" rx="2" />
+                        
+                        <!-- Document details -->
+                        <line class="report-line" x1="35" y1="20" x2="60" y2="20" />
+                        <line class="report-line" x1="35" y1="30" x2="60" y2="30" />
+                        <line class="report-line" x1="35" y1="40" x2="60" y2="40" />
+                        
+                        <!-- Chart element -->
+                        <rect class="report-circle" x="35" y="45" width="5" height="10" />
+                        <rect class="report-circle" x="45" y="42" width="5" height="13" />
+                        <rect class="report-circle" x="55" y="38" width="5" height="17" />
+                        
+                        <!-- Document icon -->
+                        <circle class="report-bg" cx="30" cy="30" r="8" />
+                        <path class="report-icon" d="M25,30 L30,35 L35,25" />
+                    </svg>
                     <h3>Financial Statements</h3>
                     <p>Navigate balance sheets, income statements, and cash flow like a pro.</p>
                 </div>
                 <div class="glass-card reveal-element">
-                    <img src="images/portfolio.svg" alt="Portfolio Building" class="card-img">
+                    <svg class="card-img" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                            .port-bg { fill: rgba(13, 255, 132, 0.1); stroke: #0DFF84; }
+                            .port-pie { stroke: #0A0A0A; stroke-width: 0.5; }
+                            .port-slice1 { fill: #0DFF84; }
+                            .port-slice2 { fill: rgba(13, 255, 132, 0.6); }
+                            .port-slice3 { fill: rgba(13, 255, 132, 0.3); }
+                            .port-dot { fill: #0DFF84; }
+                        </style>
+                        <!-- Background circle -->
+                        <circle class="port-bg" cx="40" cy="40" r="35" stroke-width="1" fill-opacity="0.2" />
+                        
+                        <!-- Pie chart -->
+                        <path class="port-slice1 port-pie" d="M40,40 L40,5 A35,35 0 0,1 69.3,57.7 z" />
+                        <path class="port-slice2 port-pie" d="M40,40 L69.3,57.7 A35,35 0 0,1 10.7,57.7 z" />
+                        <path class="port-slice3 port-pie" d="M40,40 L10.7,57.7 A35,35 0 0,1 40,5 z" />
+                        
+                        <!-- Connection dots -->
+                        <circle class="port-dot" cx="55" cy="25" r="3" />
+                        <circle class="port-dot" cx="40" cy="70" r="3" />
+                        <circle class="port-dot" cx="20" cy="30" r="3" />
+                        
+                        <!-- Connection lines -->
+                        <line stroke="#0DFF84" stroke-width="1" x1="40" y1="40" x2="55" y2="25" />
+                        <line stroke="#0DFF84" stroke-width="1" x1="40" y1="40" x2="40" y2="70" />
+                        <line stroke="#0DFF84" stroke-width="1" x1="40" y1="40" x2="20" y2="30" />
+                    </svg>
                     <h3>Portfolio Building</h3>
                     <p>Create a diversified investment strategy tailored to your financial goals.</p>
                 </div>
@@ -175,7 +360,11 @@
             <div class="company-analyzer reveal-element">
                 <div class="company-header">
                     <div class="company-logo">
-                        <img src="images/apple-logo.svg" alt="Apple Inc. Logo" id="company-logo">
+                        <svg id="company-logo" width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30.5,16.9c-0.1-1.1,0.3-2.4,1.1-3.4c0.7-0.9,1.9-1.7,2.9-1.8c0.1,1.2-0.3,2.4-1.1,3.4 C32.6,16,31.5,16.8,30.5,16.9z M33.4,18c-1.6-0.1-3,1-3.7,1c-0.8,0-2-1-3.3-0.9c-1.7,0-3.2,1-4.1,2.5c-1.7,3-0.5,7.5,1.3,9.9
+                             c0.8,1.2,1.8,2.6,3.2,2.5c1.3-0.1,1.8-0.8,3.3-0.8c1.6,0,2,0.8,3.3,0.8c1.4,0,2.3-1.3,3.1-2.5c1-1.4,1.4-2.8,1.4-2.9
+                             c0,0-2.7-1-2.7-4.1c0-2.6,2.1-3.7,2.2-3.8C35.9,18.4,33.9,18,33.4,18z" fill="#000"/>
+                        </svg>
                     </div>
                     <div class="company-info">
                         <h3 id="company-name">Apple Inc. (AAPL)</h3>
