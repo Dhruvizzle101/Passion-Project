@@ -29,6 +29,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize chatbot enhancements
     initChatbot();
     enhanceChatbotExperience();
+    
+    // Performance optimization for animations
+    // Only animate sections when they're in the viewport
+    function setupPerformanceOptimizations() {
+        const sections = document.querySelectorAll('section');
+        const options = {
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add class when section is in view
+                    entry.target.classList.add('in-view');
+                } else {
+                    // Remove class when section is out of view (for better performance)
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, options);
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    }
+    
+    // Call performance optimizations function
+    setupPerformanceOptimizations();
 });
 
 // Reveal elements on scroll
